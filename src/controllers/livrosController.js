@@ -9,8 +9,7 @@ class LivroController {
 
       req.resultado = buscaLivros
 
-      next();
-      
+      next();      
     } catch (erro) {
       next(erro);
     }
@@ -20,9 +19,7 @@ class LivroController {
     try {
       const id = req.params.id;
 
-      const livroResultados = await livros.findById(id)
-        .populate("autor", "nome")
-        .exec();
+      const livroResultados = await livros.findById(id)        
         
       if (livroResultados !== null){
         res.status(200).send(livroResultados);
@@ -87,7 +84,7 @@ class LivroController {
       if (busca !== null) {
         const livrosResultado = livros
         .find(busca)
-        .populate("autor")
+        
 
         req.resultado = livrosResultado
   
